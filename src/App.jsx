@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //pages
-import Home from "./pages/home.jsx";
+import Home from "./pages/Home.jsx";
 import Cart from "./pages/Cart.jsx";
 
 //layouts
