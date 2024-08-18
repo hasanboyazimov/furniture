@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { incrementOrder } from "../features/productSlice";
 import { useEffect } from "react";
 import { getData } from "../features/productSlice";
+import toast, { Toaster } from 'react-hot-toast';
 
 function SingleProduct() {
   useEffect(() => {
@@ -11,7 +12,6 @@ function SingleProduct() {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const { allProducts: products } = useSelector((state) => state.orders);
-  // console.log(products)
   const product = products.find((p) => p.id == productId);
 
   if (!product) {
@@ -19,8 +19,10 @@ function SingleProduct() {
   }
 
   return (
+   
     <div className="flex max-w-[1240px] mx-auto flex-col md:flex-row items-start lg:items-center gap-8 bg-white p-6 mt-5">
       {/* Image Section */}
+      <Toaster/>
       <div className="flex-shrink-0 w-full md:w-1/2">
         <img
           className="rounded-lg max-w-[400px] h-auto object-cover"
@@ -36,7 +38,7 @@ function SingleProduct() {
         </h2>
         <h3 className="text-lg text-gray-500">{product.attributes.category}</h3>
         <p className="text-xl font-bold text-gray-700">
-          ${product.attributes.price/100}
+          ${product.attributes.price / 100}
         </p>
         <p className="text-gray-600">{product.attributes.description}</p>
 
@@ -76,6 +78,7 @@ function SingleProduct() {
             className="bg-purple-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-purple-700"
             onClick={() => {
               dispatch(incrementOrder(product.id));
+              toast.success("Successfully added to cart!");
             }}
           >
             ADD TO BAG

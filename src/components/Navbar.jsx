@@ -26,7 +26,7 @@ const Navbar = () => {
       document.documentElement.classList.add("dark");
     }
   }, []);
-  const { orderTotal, totalPrice } = useSelector((state) => state.orders);
+  const { orderTotal } = useSelector((state) => state.orders);
   return (
     <header>
       {/* Top Section */}
@@ -71,7 +71,7 @@ const Navbar = () => {
           <Link to="/cart" className="relative">
             <FiShoppingCart className="text-xl cursor-pointer" />
             <span className="absolute -top-1 -right-2 bg-primary text-white text-xs rounded-full px-1">
-              0
+              {orderTotal}
             </span>
           </Link>
         </div>
