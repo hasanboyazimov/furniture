@@ -23,7 +23,7 @@ function Cart() {
 
   return (
     <div className="w-full flex justify-center items-center">
-      <div className="bg-white  max-w-[384px] w-full rounded-md p-10">
+      <div className="p-10">
         <h1 className="font-bold text-[28px]">
           Your Cart ({orderTotal})
         </h1>
@@ -40,9 +40,9 @@ function Cart() {
                     <span className="font-semibold">
                       {order.amount}x
                     </span>
-                    <span>@ ${order.price}</span>
+                    <span>@ ${(order.attributes.price/100)}</span>
                     <span className="pl-5 font-[500]">
-                      ${order.price * order.amount}
+                      ${(order.attributes.price/100) * order.amount}
                     </span>
                   </div>
                 </div>
@@ -69,10 +69,6 @@ function Cart() {
           </div>
         ) : (
           <div className="flex items-center justify-center flex-col">
-            <img
-              src="./assets/images/illustration-empty-cart.svg"
-              alt="Empty cart illustration"
-            />
             <p className="text-[#87635A] text-sm">
               Your added items will appear here
             </p>

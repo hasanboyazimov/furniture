@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const url = "https://json-api.uz/api/project/onlineshopuz/products";
+const url = "https://strapi-store-server.onrender.com/api/products";
 
 export const getData = createAsyncThunk("product/getData", async () => {
   const req = await fetch(url);
   const { data } = await req.json();
-  console.log(data);
+  // console.log(data);
   return data;
 });
 
@@ -63,7 +63,7 @@ export const productSlice = createSlice({
       let allOrderPrice = 0;
       state.ordered.forEach((order) => {
         allOrderAmount += order.amount;
-        allOrderPrice += order.amount * order.price;
+        allOrderPrice += order.amount * (order.attributes.price/100);
       });
 
       state.orderTotal = allOrderAmount;

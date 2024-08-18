@@ -57,8 +57,8 @@ function Card({ product }) {
       </div>
       <div className="mt-[38px]">
         <p className="text-[#87635A] text-xs">{product.category}</p>
-        <h3 className="font-semibold">{product.name}</h3>
-        <p className="text-[#0fc76b] font-semibold">${product.price}</p>
+        <h3 className="font-semibold">{product.title}</h3>
+        <p className="text-[#0fc76b] font-semibold">${product.price/100}</p>
       </div>
     </div>
   );

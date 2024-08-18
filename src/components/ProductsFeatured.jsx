@@ -3,18 +3,19 @@ import { Link } from "react-router-dom";
 import { addAllProducts, getData } from "../features/productSlice";
 import { useEffect } from "react";
 
-function ProductsList() {
+function ProductsFeatured() {
   const dispatch = useDispatch();
   const { allProducts:products, isLoading } = useSelector(
     (state) => state.orders
   );
+  // console.log(allProducts)
 
   useEffect(() => {
     dispatch(getData());
   }, []);
   return (
-    <div className="pt-12 max-w-[1240px] mx-auto grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {products.map((product) => {
+    <div className="pt-12 grid gap-4 md:grid-cols-2 mb-10 lg:grid-cols-3">
+      {products.slice(0,3).map((product) => {
         const { title, price, image } = product.attributes;
         const dollarsAmount = price/100;
         return (
@@ -40,4 +41,4 @@ function ProductsList() {
     </div>
   );
 }
-export default ProductsList;
+export default ProductsFeatured;
